@@ -1,3 +1,5 @@
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { HistorialService } from './../providers/historial/historial';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -7,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { GuardadosPage, HomePage, MapaPage, TabsPage } from "../pages/index.paginas";
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { HistorialProvider } from '../providers/historial/historial';
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -21,7 +23,11 @@ import { HistorialProvider } from '../providers/historial/historial';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AgmCoreModule.forRoot({
+      apiKey:''
+    }),
+    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -37,8 +43,8 @@ import { HistorialProvider } from '../providers/historial/historial';
     SplashScreen,
     BarcodeScanner,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HistorialProvider,
-    HistorialProvider
+    HistorialService,
+    InAppBrowser
   ]
 })
 export class AppModule {}

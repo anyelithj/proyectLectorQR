@@ -6,13 +6,23 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>mapa</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>mapa</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+    <h1>{{title}}</h1>
+    <agm-map [latitude]="lat" [longitude]="ing" [zoom]="16">
+        <agm-marker [latitude]="lat" [longitude]="ing"></agm-marker>
+    </agm-map>
 </ion-content>
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons end>
+            <button ion-button (click)="cerrar_modal()"> Cerrar </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>
